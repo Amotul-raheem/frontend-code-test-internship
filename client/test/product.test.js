@@ -50,22 +50,22 @@ describe('Product', () => {
     });
 
     test("should disable the decrease quantity button when quantity is 1", () => {
-        const {getByText} = render(<Product/>);
+        const {getByText, getByRole} = render(<Product/>);
+        const decreaseQuantityButton = getByRole('button', {name: /-/i});
 
-        const decreaseQuantity = getByText("-");
-        fireEvent.click(decreaseQuantity);
+        fireEvent.click(decreaseQuantityButton);
 
-        expect(decreaseQuantity).toBeDisabled();
+        expect(decreaseQuantityButton).toBeDisabled();
     });
 
     test("should not disable the button when quantity is more than 1", () => {
-        const {getByText} = render(<Product/>);
+        const {getByText, getByRole} = render(<Product/>);
 
+        const decreaseQuantityButton = getByRole('button', {name: /-/i});
         const increaseQuantity = getByText("+");
-        const decreaseQuantity = getByText("-");
 
         fireEvent.click(increaseQuantity);
 
-        expect(decreaseQuantity).not.toBeDisabled();
+        expect(decreaseQuantityButton).not.toBeDisabled();
     });
 });

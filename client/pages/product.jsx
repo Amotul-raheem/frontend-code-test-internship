@@ -83,24 +83,25 @@ export default function Product() {
                             <div className="flex flex-col justify-center items-center">
                                 <p className="font-sans text-lg py-2 ">Qty</p>
                                 <div className="flex justify-center items-center">
-                                    <div
+                                    <button
+                                        name="decreaseButton"
+                                        disabled={isDeceaseButtonDisabled}
                                         onClick={handleDecreaseCurrentQuantity}
                                         className={`flex mx-4 ${isDeceaseButtonDisabled ? 'bg-plum' : 'bg-sohoLights'} rounded-2xl justify-center items-center cursor-pointer
                                         w-[50px] sm:w-[50px] md:w-[60px] lg:w-[60px]
                                         h-[50px] sm:h-[50px] md:h-[60px]  lg:h-[60px]`}>
-                                        <button disabled={isDeceaseButtonDisabled}
-                                                className={`font-sans font-bold ${isDeceaseButtonDisabled ? 'text-purpleHaze' : 'text-siphon'} text-2xl`}> -
-                                        </button>
-                                    </div>
+                                        <p className={`font-sans font-bold ${isDeceaseButtonDisabled ? 'text-purpleHaze' : 'text-siphon'} text-2xl`}> - </p>
+                                    </button>
                                     <p title="Current quantity"
                                        className={`font-bold font-sans  text-3xl sm:text-3xl md:text-5xl lg:text-5xl`}>{currentQuantity}</p>
-                                    <div
+                                    <button
+                                        name="increaseButton"
                                         onClick={handleIncreaseCurrentQuantity}
                                         className="flex mx-4 bg-sohoLights rounded-2xl justify-center items-center cursor-pointer
                                         w-[50px] sm:w-[50px] md:w-[60px] lg:w-[60px]
                                         h-[50px] sm:h-[50px] md:h-[60px] lg:h-[60px]">
-                                        <button className="font-sans font-bold text-siphon text-2xl"> +</button>
-                                    </div>
+                                        <p className="font-sans font-bold text-siphon text-2xl"> + </p>
+                                    </button>
                                 </div>
                             </div>
                         </div>
