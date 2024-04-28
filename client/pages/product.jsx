@@ -1,5 +1,20 @@
+import {useState} from "react";
 
 export default function Product() {
+    const [basketItems, setBasketItems] = useState(0)
+    const [currentQuantity, setCurrentQuantity] = useState(1)
+
+    const handleAddToCart = () => {
+        setBasketItems(basketItems + currentQuantity)
+    }
+    const handleDecreaseCurrentQuantity =() => {
+        if (currentQuantity > 1){
+            setCurrentQuantity(currentQuantity - 1)
+        }
+    }
+    const handleIncreaseCurrentQuantity = () => {
+        setCurrentQuantity(currentQuantity + 1)
+    }
 
     return (
         <div className=" flex h-auto w-full flex-col overflow-x-hidden">
@@ -17,7 +32,7 @@ export default function Product() {
                     />
                     <div
                         className="absolute -top-2 -right-2 flex justify-center items-center w-8 h-8 bg-sohoLights rounded-xl ">
-                        <p  className="text-base font-bold font-sans ">0</p>
+                        <p className="text-base font-bold font-sans ">{basketItems}</p>
                     </div>
                 </div>
 
@@ -51,13 +66,15 @@ export default function Product() {
                                 <p className="font-sans text-lg py-2 ">Qty</p>
                                 <div className="flex justify-center items-center">
                                     <div
-                                        className={`flex mx-4 bg-sohoLights rounded-2xl justify-center items-center cursor-pointer
+                                        onClick={handleDecreaseCurrentQuantity}
+                                        className={`flex mx-4 ${currentQuantity === 1 ? 'bg-plum' : 'bg-sohoLights'} rounded-2xl justify-center items-center cursor-pointer
                                         w-[50px] sm:w-[50px] md:w-[60px] lg:w-[60px]
                                         h-[50px] sm:h-[50px] md:h-[60px]  lg:h-[60px]`}>
-                                        <p className={`font-sans font-bold text-siphon text-2xl `}> - </p>
+                                        <p className={`font-sans font-bold ${currentQuantity === 1 ? 'text-purpleHaze' : 'text-siphon'} text-2xl `}> - </p>
                                     </div>
-                                    <p  className={`font-bold font-sans text-3xl sm:text-3xl md:text-5xl lg:text-5xl`}>1</p>
+                                    <p  className={`font-bold font-sans  text-3xl sm:text-3xl md:text-5xl lg:text-5xl`}>{currentQuantity}</p>
                                     <div
+                                        onClick={handleIncreaseCurrentQuantity}
                                         className="flex mx-4 bg-sohoLights rounded-2xl justify-center items-center cursor-pointer
                                         w-[50px] sm:w-[50px] md:w-[60px] lg:w-[60px]
                                         h-[50px] sm:h-[50px] md:h-[60px] lg:h-[60px]">
@@ -67,6 +84,7 @@ export default function Product() {
                             </div>
                         </div>
                         <button
+                            onClick={handleAddToCart}
                             className="w-full my-12  bg-sohoLights rounded-2xl text-siphon font-medium
                             py-6 sm:py-6 md:py-8 lg:py-8
                             text-xl sm:text-xl md:text-3xl lg:text-3xl "
