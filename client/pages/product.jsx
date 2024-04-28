@@ -1,8 +1,6 @@
 import {useState} from "react";
 import {products} from "../../server/db";
 
-
-
 export default function Product() {
     const [basketItems, setBasketItems] = useState(0)
     const [currentQuantity, setCurrentQuantity] = useState(1)
@@ -11,8 +9,8 @@ export default function Product() {
     const handleAddToCart = () => {
         setBasketItems(basketItems + currentQuantity)
     }
-    const handleDecreaseCurrentQuantity =() => {
-        if (currentQuantity > 1){
+    const handleDecreaseCurrentQuantity = () => {
+        if (currentQuantity > 1) {
             setCurrentQuantity(currentQuantity - 1)
         }
     }
@@ -35,11 +33,10 @@ export default function Product() {
                         alt="Basket"
                     />
                     <div
-                        className="absolute -top-2 -right-2 flex justify-center items-center w-8 h-8 bg-sohoLights rounded-xl ">
+                        className="absolute -top-2 -right-2 flex justify-center items-center w-7 h-7 bg-sohoLights rounded-lg ">
                         <p title="Basket items" className="text-base font-bold font-sans ">{basketItems}</p>
                     </div>
                 </div>
-
 
             </nav>
             <div className="flex my-4 h-auto w-full
@@ -60,12 +57,13 @@ export default function Product() {
                     <div className="flex flex-col justify-center w-full sm:w-full md:w-full lg:w-[50%]">
                         <h1 className="font-bold font-sans text-ice my-10
                         text-4xl sm:text-4xl md:text-6xl lg:text-7xl
-                        leading-[3rem] sm:leading-3 md:leading-[5rem] lg:leading-[7rem] "
+                        leading-[3rem] sm:leading-3 md:leading-[5rem] lg:leading-[6rem] "
                         >{product.name}</h1>
-                        <p className="my-4 font-medium text-2xl font-sans text-purpleHaze">{product.power} // Packet of {product.quantity}</p>
+                        <p className="my-4 font-medium text-2xl font-sans text-purpleHaze">{product.power} // Packet
+                            of {product.quantity}</p>
                         <div
                             className="w-full flex justify-between items-center  my-6 font-sans  sm:my-6 md:my-16 lg:my-16">
-                            <p className="font-bold font-sans text-4xl sm:text-4xl md:text-5xl lg:text-5xl mt-12 ">&pound;{product.price/100}</p>
+                            <p className="font-bold font-sans text-4xl sm:text-4xl md:text-5xl lg:text-5xl mt-12 ">&pound;{product.price / 100}</p>
                             <div className="flex flex-col justify-center items-center">
                                 <p className="font-sans text-lg py-2 ">Qty</p>
                                 <div className="flex justify-center items-center">
@@ -74,15 +72,16 @@ export default function Product() {
                                         className={`flex mx-4 ${currentQuantity === 1 ? 'bg-plum' : 'bg-sohoLights'} rounded-2xl justify-center items-center cursor-pointer
                                         w-[50px] sm:w-[50px] md:w-[60px] lg:w-[60px]
                                         h-[50px] sm:h-[50px] md:h-[60px]  lg:h-[60px]`}>
-                                        <p className={`font-sans font-bold ${currentQuantity === 1 ? 'text-purpleHaze' : 'text-siphon'} text-2xl `}> - </p>
+                                        <button disabled={currentQuantity === 1} className={`font-sans font-bold ${currentQuantity === 1 ? 'text-purpleHaze' : 'text-siphon'} text-2xl`}> - </button>
                                     </div>
-                                    <p title="Current quantity" className={`font-bold font-sans  text-3xl sm:text-3xl md:text-5xl lg:text-5xl`}>{currentQuantity}</p>
+                                    <p title="Current quantity"
+                                       className={`font-bold font-sans  text-3xl sm:text-3xl md:text-5xl lg:text-5xl`}>{currentQuantity}</p>
                                     <div
                                         onClick={handleIncreaseCurrentQuantity}
                                         className="flex mx-4 bg-sohoLights rounded-2xl justify-center items-center cursor-pointer
                                         w-[50px] sm:w-[50px] md:w-[60px] lg:w-[60px]
                                         h-[50px] sm:h-[50px] md:h-[60px] lg:h-[60px]">
-                                        <p className="font-sans font-bold text-siphon text-2xl"> + </p>
+                                        <button className="font-sans font-bold text-siphon text-2xl"> + </button>
                                     </div>
                                 </div>
                             </div>
