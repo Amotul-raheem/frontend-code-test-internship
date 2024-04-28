@@ -10,6 +10,11 @@ module.exports = {
     ],
     theme: {
         extend: {
+            screens:{
+                'sm': '640px',
+                'md': '768px',
+                'lg': '1025px',
+            },
             colors:{
                 hemocyanin: "var(--hemocyanin)",
                 ice: "var(--ice)",
