@@ -32,7 +32,7 @@ export default function Product() {
                     />
                     <div
                         className="absolute -top-2 -right-2 flex justify-center items-center w-8 h-8 bg-sohoLights rounded-xl ">
-                        <p className="text-base font-bold font-sans ">{basketItems}</p>
+                        <p title="Basket items" className="text-base font-bold font-sans ">{basketItems}</p>
                     </div>
                 </div>
 
@@ -72,7 +72,7 @@ export default function Product() {
                                         h-[50px] sm:h-[50px] md:h-[60px]  lg:h-[60px]`}>
                                         <p className={`font-sans font-bold ${currentQuantity === 1 ? 'text-purpleHaze' : 'text-siphon'} text-2xl `}> - </p>
                                     </div>
-                                    <p  className={`font-bold font-sans  text-3xl sm:text-3xl md:text-5xl lg:text-5xl`}>{currentQuantity}</p>
+                                    <p title="Current quantity" className={`font-bold font-sans  text-3xl sm:text-3xl md:text-5xl lg:text-5xl`}>{currentQuantity}</p>
                                     <div
                                         onClick={handleIncreaseCurrentQuantity}
                                         className="flex mx-4 bg-sohoLights rounded-2xl justify-center items-center cursor-pointer
