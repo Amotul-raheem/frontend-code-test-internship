@@ -21,6 +21,7 @@ export default function Product() {
         id
     } = products[0]
 
+    const isDeceaseButtonDisabled = currentQuantity === 1;
     const handleAddToCart = () => {
         setBasketItems(basketItems + currentQuantity)
     }
@@ -84,11 +85,11 @@ export default function Product() {
                                 <div className="flex justify-center items-center">
                                     <div
                                         onClick={handleDecreaseCurrentQuantity}
-                                        className={`flex mx-4 ${currentQuantity === 1 ? 'bg-plum' : 'bg-sohoLights'} rounded-2xl justify-center items-center cursor-pointer
+                                        className={`flex mx-4 ${isDeceaseButtonDisabled ? 'bg-plum' : 'bg-sohoLights'} rounded-2xl justify-center items-center cursor-pointer
                                         w-[50px] sm:w-[50px] md:w-[60px] lg:w-[60px]
                                         h-[50px] sm:h-[50px] md:h-[60px]  lg:h-[60px]`}>
-                                        <button disabled={currentQuantity === 1}
-                                                className={`font-sans font-bold ${currentQuantity === 1 ? 'text-purpleHaze' : 'text-siphon'} text-2xl`}> -
+                                        <button disabled={isDeceaseButtonDisabled}
+                                                className={`font-sans font-bold ${isDeceaseButtonDisabled ? 'text-purpleHaze' : 'text-siphon'} text-2xl`}> -
                                         </button>
                                     </div>
                                     <p title="Current quantity"
