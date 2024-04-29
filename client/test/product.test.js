@@ -1,7 +1,18 @@
-import {render, fireEvent} from "@testing-library/react";
+import {fireEvent, render} from "@testing-library/react";
 import Product from "../pages/product";
 
 describe('Product', () => {
+
+    test('should render with initial state for product quantity and basket items', () => {
+        const {getByTitle} = render(<Product/>);
+
+        const currentQuantity = getByTitle("Current quantity");
+        const basketItems = getByTitle("Basket items");
+
+        expect(currentQuantity).toHaveTextContent("1");
+        expect(basketItems).toHaveTextContent("0");
+    });
+
     test("should be able to increase and decrease product quantity", async () => {
         const {getByText, getByTitle} = render(<Product/>);
 
